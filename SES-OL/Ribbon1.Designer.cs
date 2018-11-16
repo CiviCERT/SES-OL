@@ -38,6 +38,7 @@
             this.group1 = this.Factory.CreateRibbonGroup();
             this.reportBtn = this.Factory.CreateRibbonButton();
             this.configSES = this.Factory.CreateRibbonButton();
+            this.aboutButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // 
             this.group1.Items.Add(this.reportBtn);
             this.group1.Items.Add(this.configSES);
+            this.group1.Items.Add(this.aboutButton);
             this.group1.Label = "Suspicious Email Submitter";
             this.group1.Name = "group1";
             // 
@@ -71,6 +73,14 @@
             this.configSES.Name = "configSES";
             this.configSES.ShowImage = true;
             this.configSES.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.configSES_Click);
+            // 
+            // aboutButton
+            // 
+            this.aboutButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.aboutButton.Label = "About SES";
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.ShowImage = true;
+            this.aboutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.aboutButton_Click);
             // 
             // Ribbon1
             // 
@@ -92,6 +102,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton reportBtn;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton configSES;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton aboutButton;
     }
 
     partial class ThisRibbonCollection

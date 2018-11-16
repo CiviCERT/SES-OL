@@ -22,5 +22,10 @@ namespace SES_OL
         {
             Globals.ThisAddIn.ConfigureSES();
         }
+
+        private void aboutButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/CiviCERT/suspicious-email-submitter-tb");
+        }
     }
 }

@@ -114,7 +114,6 @@ namespace SES_OL
             Dictionary<string, string> config = null;
             var mailItems = new List<Outlook.MailItem>();
             config = LoadConfig();
-            System.Windows.Forms.MessageBox.Show("Selected: " + Globals.ThisAddIn.Application.ActiveExplorer().Selection.Count.ToString());
             foreach (var obj in Globals.ThisAddIn.Application.ActiveExplorer().Selection)
             {
                 var mail = obj as Outlook.MailItem;
@@ -123,7 +122,6 @@ namespace SES_OL
                     mailItems.Add(mail);
                 }
             }
-            System.Windows.Forms.MessageBox.Show("Count: " + mailItems.Count.ToString());
 
             if (config == null && mailItems.Count > 0)
             {
@@ -144,7 +142,7 @@ namespace SES_OL
                     SendViaWeb(dest, email, config["authToken"]);
                 }
             }
-            System.Windows.Forms.MessageBox.Show("Forwarded " + mailItems.Count.ToString() + " items.");
+            System.Windows.Forms.MessageBox.Show("Forwarded " + mailItems.Count.ToString() + " item(s).");
         }
 
         private void SendViaEmail(string dest, Outlook.MailItem email)
