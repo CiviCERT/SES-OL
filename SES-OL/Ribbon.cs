@@ -44,7 +44,7 @@ namespace SES_OL
 
         public void aboutButton_Click(Office.IRibbonControl ribbonControl)
         {
-            System.Diagnostics.Process.Start("https://github.com/CiviCERT/suspicious-email-submitter-tb");
+            System.Diagnostics.Process.Start("https://github.com/CiviCERT/suspicious-email-submitter-outlook");
         }
 
         #endregion
