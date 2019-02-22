@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using Office = Microsoft.Office.Core;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Net;
@@ -14,8 +11,13 @@ namespace SES_OL
 {
     public partial class ThisAddIn
     {
-        private static Regex mailtoRx = new Regex("^mailto:", 
+        private static Regex mailtoRx = new Regex("^mailto:",
             RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        protected override Microsoft.Office.Core.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            return new Ribbon();
+        }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -49,7 +51,8 @@ namespace SES_OL
                 {
                     dlg.Method = 0;
                     dlg.Destination = vals["serverUrl"].Substring(7);
-                } else
+                }
+                else
                 {
                     dlg.Method = 1;
                     dlg.Destination = vals["serverUrl"].Substring(8);
@@ -130,7 +133,7 @@ namespace SES_OL
             }
 
             var shouldMail = mailtoRx.IsMatch(config["serverUrl"]);
-            var dest = config["serverUrl"].Substring(shouldMail ? 7 : 8); 
+            var dest = config["serverUrl"].Substring(shouldMail ? 7 : 8);
             foreach (var email in mailItems)
             {
                 if (shouldMail)
@@ -180,7 +183,7 @@ namespace SES_OL
                         'object_relation': 'eml',
                         'value': 'Raw Email',
                         'data': '");
-            
+
             email.SaveAs(tmpfilename, Outlook.OlSaveAsType.olMSGUnicode);
             finfo = new FileInfo(tmpfilename);
 
@@ -221,7 +224,7 @@ namespace SES_OL
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
-        
+
         #endregion
     }
 }
