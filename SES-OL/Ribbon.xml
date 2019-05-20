@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="group1" label="Suspicious Email Submitter">
+          <button id="reportBtn" onAction="button1_Click" label="Report via SES" size="large" imageMso="SendStatusReport"/>
+          <button id="configSES" onAction="configSES_Click" label="Configure SES" size="large" imageMso="ControlProperties"/>
+          <button id="aboutButton" onAction="aboutButton_Click" label="About SES" size="large" imageMso="Help"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+  <contextMenus>
+    <contextMenu idMso="ContextMenuMailItem">
+      <button id="reportItem" label="Report via SES" onAction="button1_click" imageMso="SendStatusReport"/>
+    </contextMenu>
+    <contextMenu idMso="ContextMenuMultipleItems">
+      <button id="reportItems" label="Report via SES" onAction="button1_click" imageMso="SendStatusReport"/>
+    </contextMenu>
+  </contextMenus>
+</customUI>
